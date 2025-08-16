@@ -38,8 +38,12 @@ const todos = [
   2. Use an anonymous function as the callback.
   3. Return only the tasks that are not completed.
   */
-  
-  
+  const tasknotFinshed = todos.filter(function(todo) {
+    return todo.completed === false; 
+  }); 
+  console.log("Task not finshed:", tasknotFinshed); 
+  // here the not finshed tasks are being filtered out. the annoymous function is here at function(todo) 
+  // since we are not going to reassign the variable, we can keep const and add tasknotFinsheed and filter it out that way
   /*
   🔹 Task 2: Sort Tasks by Priority
   
@@ -48,8 +52,10 @@ const todos = [
   2. Use an anonymous function as the comparison function.
   3. Sort tasks in ascending order of priority (1 = highest).
   */
-  
-  
+  const sortbyPriority = todos.sort(function(a, b) {
+    return a.priority - b.priority;  
+  }); 
+  console.log("Sorted by Priority:", sortbyPriority); 
   /*
   🔹 Task 3: Mark All Tasks as Completed
   
@@ -59,7 +65,13 @@ const todos = [
   3. Change the `completed` property to `true` for every task.
   */
   
-  
+  const allCompleted = todos.map(function(todo) {
+  return {
+    ...todo,
+    completed: true
+  };
+});
+console.log("The Completed tasks goes as followes:", allCompleted); 
   /*
   🔹 Task 4: Combine Filters
   
@@ -68,8 +80,14 @@ const todos = [
   2. Then, sort the filtered results by priority using `sort()`.
   3. Use method chaining to perform both steps together.
   */
-  
-  
+  const sortedIncompleteTasks = todos
+  .filter(function(todo) {
+    return !todo.completed;
+  })
+  .sort(function(a, b) {
+    return a.priority - b.priority;
+  });
+  console.log("This was not easy to sort why did yall make me do this, not fun at all!:",sortedIncompleteTasks); 
   // ============================================
   // 🧪 Console Test Your Work
   // ============================================
